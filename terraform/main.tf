@@ -1,6 +1,8 @@
 module "service" {
   source = "/Users/eniolee/Public/CursoContainers/linuxtips-curso-containers-ecs-service-module"
 
+  region = var.region
+
   cluster_name     = var.cluster_name
   service_name     = var.service_name
   service_port     = var.service_port
@@ -16,4 +18,7 @@ module "service" {
     data.aws_ssm_parameter.private_subnet_2.value,
     data.aws_ssm_parameter.private_subnet_3.value
   ]
+
+  environment_variables = var.environment_variables
+  capabilities = var.capabilities
 }
