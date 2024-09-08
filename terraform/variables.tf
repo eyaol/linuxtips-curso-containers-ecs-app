@@ -79,12 +79,47 @@ variable "ssm_private_subnet_3" {
 # Environment
 #
 variable "environment_variables" {
-  
+
 }
 
 #
 # Capabilities
 #
 variable "capabilities" {
+
+}
+
+#
+# Service healthcheck
+#
+variable "service_healthcheck" {
+
+}
+
+#
+# Service launch type
+#
+variable "service_launch_type" {
+
+}
+
+#
+# Service task count
+#
+variable "service_task_count" {
+
+}
+
+#
+# Service ingress ports
+#
+variable "service_sg_ingress_ports" {
+
+}
+
+#
+# Service hosts
+#
+variable "service_hosts" {
 
 }
