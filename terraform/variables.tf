@@ -56,7 +56,12 @@ variable "service_healthcheck" {}
 #
 # Service launch type
 #
-variable "service_launch_type" {}
+variable "service_launch_type" {
+  type = list(object({
+    capacity_provider = string
+    weight            = number
+  }))
+}
 
 #
 # Service task count
