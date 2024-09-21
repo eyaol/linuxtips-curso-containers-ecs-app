@@ -31,7 +31,7 @@ module "service" {
   task_minimum = var.task_minimum
   task_maximum = var.task_maximum
 
-  scale_out_cpu_threshold      = var.scale_out_cpu_threshold
+  scale_out_cpu_threshold       = var.scale_out_cpu_threshold
   scale_out_adjustment          = var.scale_out_adjustment
   scale_out_comparison_operator = var.scale_out_comparison_operator
   scale_out_statistic           = var.scale_out_statistic
@@ -39,7 +39,7 @@ module "service" {
   scale_out_evaluation_periods  = var.scale_out_evaluation_periods
   scale_out_cooldown            = var.scale_out_cooldown
 
-  scale_in_cpu_threshold      = var.scale_in_cpu_threshold
+  scale_in_cpu_threshold       = var.scale_in_cpu_threshold
   scale_in_adjustment          = var.scale_in_adjustment
   scale_in_comparison_operator = var.scale_in_comparison_operator
   scale_in_statistic           = var.scale_in_statistic

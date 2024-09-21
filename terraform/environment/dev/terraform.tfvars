@@ -11,11 +11,20 @@ cluster_name = "linuxtips-ecs-cluster"
 #
 # Service
 # 
-service_name             = "chip"
-service_port             = 8080
-service_cpu              = 256
-service_memory           = 512
-service_launch_type      = "EC2"
+service_name   = "chip"
+service_port   = 8080
+service_cpu    = 256
+service_memory = 512
+service_launch_type = [
+  {
+    capacity_provider = "FARGATE"
+    weight            = 50
+  },
+  {
+    capacity_provider = "FARGATE_SPOT"
+    weight            = 50
+  }
+]
 service_task_count       = 3
 service_sg_ingress_ports = ["8080"]
 service_hosts            = ["chip.linuxtips.demo"]
@@ -57,7 +66,7 @@ service_healthcheck = {
 }
 
 scale_type   = "requests_tracking"
-task_minimum  = 3
+task_minimum = 3
 task_maximum = 12
 
 scale_out_cpu_threshold       = 50
