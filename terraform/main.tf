@@ -22,6 +22,8 @@ module "service" {
   service_task_count          = var.service_task_count
   service_hosts               = var.service_hosts
 
+  container_image = var.container_image
+
   service_sg_ingress_ports = var.service_sg_ingress_ports
 
   environment_variables = var.environment_variables
