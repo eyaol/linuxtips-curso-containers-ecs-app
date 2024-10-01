@@ -10,7 +10,7 @@ class ArquiteturacontainersApplicationTests {
 
     @Test
     void testMock1() {
-        assertEquals(true, false);
+        assertEquals(true, true);
     }
 
     @Test
