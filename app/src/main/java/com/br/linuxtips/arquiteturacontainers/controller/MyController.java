@@ -10,7 +10,7 @@ public class MyController {
 
     @GetMapping("/version")
     public ResponseEntity<String> getVersion() {
-        return ResponseEntity.ok("v1");
+        return ResponseEntity.ok("v6");
     }
 
     @GetMapping("/healthcheck")
