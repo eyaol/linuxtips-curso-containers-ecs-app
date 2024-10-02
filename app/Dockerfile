@@ -1,5 +1,5 @@
 # Etapa 1: Construção da aplicação
-FROM gradle:8.3.0-jdk21 AS build  # Use o Gradle 8.3 com JDK 21
+FROM gradle:jdk21 AS build # Use o Gradle 8.3 com JDK 21
 WORKDIR /app
 COPY --chown=gradle:gradle . /app
 RUN ./gradlew build
