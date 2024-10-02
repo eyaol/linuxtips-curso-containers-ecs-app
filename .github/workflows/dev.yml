@@ -34,7 +34,7 @@ jobs:
     
       - name: Check gradle version
         run: gradle --version
-        
+
       - name: Build with Gradle Wrapper
         run: ./gradlew build
         working-directory: ./app
@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Package
-          path: app/build/libs/*.jar
+          path: app/build/libs
 
       - name: Run test
         run: ./gradlew test
