@@ -1,13 +1,10 @@
-# Etapa 1: Construção da aplicação
-FROM gradle:jdk21 AS build # Use o Gradle 8.3 com JDK 21
+# Estágio de construção
+FROM eclipse-temurin:21-jdk AS builder
 WORKDIR /app
-COPY --chown=gradle:gradle . /app
+COPY . .
 RUN ./gradlew build
 
-# Etapa 2: Criação da imagem final
-FROM openjdk:21-jdk-slim
-WORKDIR /app
-# Copia o arquivo JAR gerado na etapa de build
-COPY --from=build /app/build/libs/*.jar app.jar
-# Define o comando de entrada para executar o JAR
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+# Estágio final
+FROM eclipse-temurin:21-jdk
+COPY --from=builder /app/build/libs/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
