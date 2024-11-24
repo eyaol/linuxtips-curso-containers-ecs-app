@@ -1,5 +1,5 @@
 module "service" {
-  source = "github.com/eyaol/linuxtips-curso-containers-ecs-service-module?ref=v3"
+  source = "github.com/eyaol/linuxtips-curso-containers-ecs-service-module?ref=v4"
 
   region       = var.region
   cluster_name = var.cluster_name
@@ -52,4 +52,15 @@ module "service" {
   scale_tracking_requests      = var.scale_tracking_requests
 
   alb_arn = data.aws_ssm_parameter.alb.value
+
+  secrets = [
+    {
+      name = "VARIAVEL_COM_VALOR_DO_SSM"
+      valueFrom = aws_ssm_parameter.teste.arn
+    },
+    {
+      name = "VARIAVEL_COM_VALOR_DO_SECRETS"
+      valueFrom = aws_secretsmanager_secret.teste.arn
+    }
+  ]
 }
