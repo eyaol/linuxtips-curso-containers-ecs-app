@@ -1,10 +1,10 @@
 module "service" {
-  source = "github.com/eyaol/linuxtips-curso-containers-ecs-service-module?ref=v4"
+  source = "github.com/eyaol/linuxtips-curso-containers-ecs-service-module?ref=v1.2.0"
 
   region       = var.region
   cluster_name = var.cluster_name
-  vpc_id       = data.aws_ssm_parameter.vpc_id.value
 
+  vpc_id       = data.aws_ssm_parameter.vpc_id.value
   private_subnets = [
     data.aws_ssm_parameter.private_subnet_1.value,
     data.aws_ssm_parameter.private_subnet_2.value,
@@ -52,6 +52,16 @@ module "service" {
   scale_tracking_requests      = var.scale_tracking_requests
 
   alb_arn = data.aws_ssm_parameter.alb.value
+
+  efs_volumes = [
+    {
+      volume_name      = "volume-de-exemplo"
+      file_system_id   = aws_efs_file_system.main.id
+      file_system_root = "/"
+      mount_point      = "/mnt/efs"
+      read_only        = false
+    }
+  ]
 
   secrets = [
     {
